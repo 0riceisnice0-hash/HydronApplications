@@ -1654,3 +1654,192 @@ input, textarea, select {
     background: #fff;
   }
 }
+
+/* ----------------------------------------------------------------
+   22. HERO CREDIBILITY LINE
+---------------------------------------------------------------- */
+.hero-credibility {
+  margin-top: var(--space-6);
+  font-size: var(--fs-sm);
+  color: var(--colour-text-subtle);
+  letter-spacing: 0.01em;
+}
+
+/* ----------------------------------------------------------------
+   23. PROCESS SECTION CANVAS
+   Canvas is positioned absolutely behind the process steps.
+---------------------------------------------------------------- */
+.process-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.process-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 0;
+}
+
+/* Ensure process content sits above canvas */
+.process-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----------------------------------------------------------------
+   24. CAPABILITIES SHOWCASE — 3-panel interactive layout
+---------------------------------------------------------------- */
+
+/* Outer wrapper: left cards | centre preview | right cards */
+.capabilities-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* Each side is a 2x2 grid of cards */
+.cap-cards-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+/* Individual capability card */
+.cap-card {
+  padding: var(--space-5);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--border-radius);
+  background: var(--colour-bg-card);
+  cursor: pointer;
+  transition: border-color var(--transition-base), background var(--transition-base),
+              transform var(--transition-base), box-shadow var(--transition-base);
+  outline: none;
+}
+
+.cap-card:hover,
+.cap-card:focus-visible,
+.cap-card.is-active {
+  border-color: rgba(79, 142, 247, 0.4);
+  background: var(--colour-bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.cap-card.is-active {
+  box-shadow: 0 0 0 2px rgba(79, 142, 247, 0.3), 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.cap-card-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--colour-accent);
+  margin-bottom: var(--space-3);
+}
+
+.cap-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cap-card h4 {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--colour-white);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-2);
+  line-height: 1.3;
+}
+
+.cap-card p {
+  font-size: var(--fs-xs);
+  color: var(--colour-text-muted);
+  line-height: 1.55;
+}
+
+/* Centre preview panel */
+.cap-preview-panel {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-6));
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--colour-border);
+  background: var(--colour-bg-card);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cap-preview-panel canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cap-preview-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-xs);
+  color: var(--colour-text-subtle);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+/* Hide hint once a card is active */
+.capabilities-showcase.has-active .cap-preview-hint {
+  opacity: 0;
+}
+
+/* Mobile hint — only shown below 900px */
+.cap-mobile-hint {
+  display: none;
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--colour-text-subtle);
+  margin-top: var(--space-4);
+}
+
+/* ----------------------------------------------------------------
+   25. RESPONSIVE — CAPABILITIES SHOWCASE
+---------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .capabilities-showcase {
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 900px) {
+  /* On tablet / mobile: hide centre panel, stack cards in 2 columns */
+  .capabilities-showcase {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .cap-preview-panel {
+    display: none;
+  }
+
+  .cap-cards-group {
+    grid-template-columns: 1fr;
+  }
+
+  .cap-mobile-hint {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .capabilities-showcase {
+    grid-template-columns: 1fr;
+  }
+}
