@@ -228,6 +228,7 @@
   var form            = document.getElementById('contact-form');
   var submitBtn       = document.getElementById('form-submit');
   var statusContainer = document.getElementById('form-status-container');
+  var formWrap        = document.querySelector('.contact-form-wrap');
 
   if (form) {
 
@@ -355,15 +356,15 @@
           form.querySelectorAll('.field-error').forEach(function (el) {
             el.textContent = '';
           });
-          /* Hide the form and show thank you message */
-          form.style.display = 'none';
-          if (statusContainer) {
-            statusContainer.innerHTML =
+          /* Replace form wrapper with thank you message */
+          if (formWrap) {
+            formWrap.innerHTML =
               '<div class="form-thankyou" role="status">' +
+                '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3ddc84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
                 '<h3>Thank you!</h3>' +
                 '<p>Your message has been sent. I\'ll be in touch shortly.</p>' +
               '</div>';
-            statusContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            formWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         } else {
           return response.json().then(function (data) {
