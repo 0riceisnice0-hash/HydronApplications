@@ -340,8 +340,6 @@
 
       /*
        * Submit to Formspree.
-       * Replace "YOUR_FORM_ID" in the form action attribute (index.html) with
-       * your actual Formspree form ID before deploying.
        */
       fetch(form.action, {
         method:  'POST',
