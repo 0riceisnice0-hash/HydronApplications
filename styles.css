@@ -688,19 +688,30 @@ input, textarea, select {
 }
 
 .process-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-width: 760px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .process-step {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: var(--space-8);
-  align-items: start;
-  padding: var(--space-8) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--border-radius-lg);
+  background: var(--colour-bg-card);
+  transition: border-color var(--transition-base), background var(--transition-base),
+              transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.process-step:hover {
+  border-color: rgba(79, 142, 247, 0.3);
+  background: var(--colour-bg-card-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 
 .process-connector {
@@ -926,6 +937,21 @@ input, textarea, select {
 
 .cs-gallery--single .img-placeholder {
   aspect-ratio: 4 / 3;
+}
+
+/* Real case study images */
+.cs-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--colour-border);
+  display: block;
+  object-fit: cover;
+}
+
+.cs-image--small {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
 /* Case study footer */
@@ -1503,18 +1529,13 @@ input, textarea, select {
     grid-template-columns: 1fr;
   }
 
-  .process-step {
-    grid-template-columns: 48px 1fr;
-    gap: var(--space-5);
+  .process-steps {
+    grid-template-columns: 1fr;
   }
 
   .step-number {
     width: 44px;
     height: 44px;
-  }
-
-  .process-connector {
-    margin-left: 48px;
   }
 
   .cs-header {
@@ -1680,7 +1701,7 @@ input, textarea, select {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.5;
   z-index: 0;
 }
 
@@ -1806,6 +1827,7 @@ input, textarea, select {
 /* Hide hint once a card is active */
 .capabilities-showcase.has-active .cap-preview-hint {
   opacity: 0;
+  pointer-events: none;
 }
 
 /* Mobile hint — only shown below 900px */
