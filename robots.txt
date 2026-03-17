@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://hydronapplications.com/sitemap.xml
+Sitemap: https://hydronapplications.co.uk/sitemap.xml
