@@ -1737,13 +1737,22 @@ input, textarea, select {
 .cap-card-icon {
   width: 28px;
   height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  max-width: 28px;
+  max-height: 28px;
   color: var(--colour-accent);
   margin-bottom: var(--space-3);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .cap-card-icon svg {
-  width: 100%;
-  height: 100%;
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  display: block;
 }
 
 .cap-card h4 {
