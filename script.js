@@ -1500,8 +1500,11 @@
       cards.forEach(function (c) { c.classList.remove('is-active'); });
       if (cards[index]) cards[index].classList.add('is-active');
 
-      /* Mark showcase as having an active card (hides hint) */
+      /* Mark showcase as having an active card (hides hint via CSS) */
       showcase.classList.add('has-active');
+
+      /* Clear inline opacity set by drawIdle so the CSS rule takes effect */
+      if (hintEl) hintEl.style.opacity = '';
 
       /* Skip canvas animation if user prefers reduced motion */
       if (reducedMotion) return;
