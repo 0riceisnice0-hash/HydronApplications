@@ -1312,6 +1312,25 @@ input, textarea, select {
   text-decoration: underline;
 }
 
+/* Thank you state — replaces form after successful submit */
+.form-thankyou {
+  text-align: center;
+  padding: var(--space-16) var(--space-8);
+}
+
+.form-thankyou h3 {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--colour-white);
+  margin-bottom: var(--space-4);
+}
+
+.form-thankyou p {
+  font-size: var(--fs-md);
+  color: var(--colour-text-muted);
+  line-height: 1.7;
+}
+
 /* ----------------------------------------------------------------
    15. FOOTER
 ---------------------------------------------------------------- */
