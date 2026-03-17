@@ -225,10 +225,9 @@
      7. CONTACT FORM — VALIDATION & FORMSPREE SUBMISSION
   ================================================================ */
 
-  var form        = document.getElementById('contact-form');
-  var submitBtn   = document.getElementById('form-submit');
-  var successMsg  = document.getElementById('form-success');
-  var errorMsg    = document.getElementById('form-error');
+  var form            = document.getElementById('contact-form');
+  var submitBtn       = document.getElementById('form-submit');
+  var statusContainer = document.getElementById('form-status-container');
 
   if (form) {
 
@@ -326,9 +325,8 @@
         return;
       }
 
-      /* Hide any previous status messages */
-      if (successMsg) successMsg.hidden = true;
-      if (errorMsg)   errorMsg.hidden   = true;
+      /* Clear any previous status messages */
+      if (statusContainer) statusContainer.innerHTML = '';
 
       /* Show loading state */
       if (submitBtn) {
@@ -357,10 +355,15 @@
           form.querySelectorAll('.field-error').forEach(function (el) {
             el.textContent = '';
           });
-          if (successMsg) successMsg.hidden = false;
-          /* Scroll the success message into view */
-          if (successMsg) {
-            successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          /* Hide the form and show thank you message */
+          form.style.display = 'none';
+          if (statusContainer) {
+            statusContainer.innerHTML =
+              '<div class="form-thankyou" role="status">' +
+                '<h3>Thank you!</h3>' +
+                '<p>Your message has been sent. I\'ll be in touch shortly.</p>' +
+              '</div>';
+            statusContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         } else {
           return response.json().then(function (data) {
@@ -369,9 +372,16 @@
         }
       })
       .catch(function () {
-        if (errorMsg) errorMsg.hidden = false;
-        if (errorMsg) {
-          errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (statusContainer) {
+          statusContainer.innerHTML =
+            '<div class="form-status form-status--error" role="alert">' +
+              '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>' +
+              '<div>' +
+                '<strong>Something went wrong.</strong>' +
+                '<p>Please try again or email directly at <a href="mailto:zacbartleywork@gmail.com">zacbartleywork@gmail.com</a>.</p>' +
+              '</div>' +
+            '</div>';
+          statusContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       })
       .finally(function () {
