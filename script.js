@@ -402,7 +402,9 @@
     var animId;
     var nodes = [];
     var NODE_COUNT = 28;
-    var CONNECTION_DIST = 160; /* max px distance to draw a connection line */
+    var CONNECTION_DIST = 160;  /* max px distance to draw a connection line */
+    var CONNECTION_MAX_ALPHA = 0.25; /* max opacity for connection lines */
+    var NODE_OPACITY = 0.55;         /* opacity for node fill circles */
 
     /* Resize canvas to match its CSS-rendered size */
     function resize() {
@@ -453,7 +455,7 @@
           var dy   = nodes[i].y - nodes[j].y;
           var dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
-            var alpha = (1 - dist / CONNECTION_DIST) * 0.25;
+            var alpha = (1 - dist / CONNECTION_DIST) * CONNECTION_MAX_ALPHA;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -469,7 +471,7 @@
         var n = nodes[i];
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = accent + '0.55)';
+        ctx.fillStyle = accent + NODE_OPACITY + ')';
         ctx.fill();
       }
 
@@ -605,6 +607,8 @@
 
       var inputStr   = 'hello@example.com';
       var inputFrame = 0;
+      var TOGGLE_CYCLE_FRAMES = 120; /* frames per full toggle on/off cycle */
+      var TOGGLE_FLIP_OFFSET  = 60;  /* frame within the cycle when toggle flips */
 
       function frame() {
         clear();
@@ -651,8 +655,8 @@
           }
 
           if (el.type === 'toggle') {
-            /* Toggle switches on a cycle */
-            if (t % 120 === el.delay % 120 + 60) el.on = !el.on;
+            /* Toggle switches on a cycle defined by TOGGLE_CYCLE_FRAMES */
+            if (t % TOGGLE_CYCLE_FRAMES === el.delay % TOGGLE_CYCLE_FRAMES + TOGGLE_FLIP_OFFSET) el.on = !el.on;
             var bx = el.x, by = el.y;
             var bw = 48, bh = 24, br = 12;
             ctx.globalAlpha = progress;
@@ -745,6 +749,7 @@
       var lineH = 18;
       var visibleLines = Math.floor((h * 0.7) / lineH) + 2;
       var totalScroll  = codeLines.length * lineH;
+      var SCROLL_INTERVAL_FRAMES = 3; /* advance scroll by 1px every N frames */
 
       function frame() {
         clear();
@@ -765,8 +770,8 @@
         ctx.textAlign = 'center';
         ctx.fillText('automation.py', w / 2, 19);
 
-        /* Scroll code slowly */
-        if (t % 3 === 0) scrollY = (scrollY + 1) % totalScroll;
+        /* Scroll code slowly — advance 1px every SCROLL_INTERVAL_FRAMES frames */
+        if (t % SCROLL_INTERVAL_FRAMES === 0) scrollY = (scrollY + 1) % totalScroll;
 
         ctx.save();
         ctx.rect(0, 28, w, h - 60);
