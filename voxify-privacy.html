@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Privacy Policy - Voxify</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fafafa;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 48px 40px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #111;
+        }
+        .last-updated {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 32px;
+        }
+        h2 {
+            font-size: 1.15rem;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        p {
+            margin-bottom: 14px;
+            color: #444;
+        }
+        ul {
+            margin-bottom: 14px;
+            padding-left: 24px;
+            color: #444;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy for Voxify</h1>
+        <p class="last-updated">Last updated: April 10, 2026</p>
+
+        <p>Voxify is a Chrome extension that modifies microphone audio in real-time to apply voice effects during browser-based calls and voice chats.</p>
+
+        <h2>Data Collection</h2>
+        <p>Voxify collects anonymous usage analytics to improve the extension. This includes:</p>
+        <ul>
+            <li>Install and update events</li>
+            <li>Which voice effects are used and for how long</li>
+            <li>Session duration</li>
+            <li>A randomly generated anonymous identifier (UUID) created on install — this is not linked to any personal information</li>
+        </ul>
+        <p>No names, email addresses, IP addresses, or other personally identifiable information are collected automatically.</p>
+        <p>Feedback submitted voluntarily through the built-in feedback form may include an optional email address if the user chooses to provide one for follow-up purposes.</p>
+
+        <h2>Audio Data</h2>
+        <p>All audio processing occurs entirely within your browser using the Web Audio API. No audio is ever recorded, stored, uploaded, or transmitted to any server. Voxify does not have access to the content of your conversations.</p>
+
+        <h2>Third-Party Services</h2>
+        <p>Anonymous analytics data and user-submitted feedback are sent to a private Discord webhook endpoint operated by the Voxify development team. No data is shared with, sold to, or transferred to any other third parties.</p>
+
+        <h2>Permissions</h2>
+        <ul>
+            <li><code>storage</code>: Saves your preferences (selected voice effect, volume, pitch, favourites, soundboard slots) so they persist across browser sessions.</li>
+            <li><code>tabs</code>: Communicates your current voice effect settings from the extension popup to the content script running in the active tab.</li>
+            <li><strong>Host permission</strong> (<code>&lt;all_urls&gt;</code>): Content scripts run on all websites because the extension needs to intercept microphone access on any site that uses it (Discord, Google Meet, Zoom, Teams, Roblox, etc.).</li>
+            <li><strong>Host permission</strong> (<code>discord.com/api</code>): Used solely to send anonymous analytics and voluntary user feedback to a private Discord webhook.</li>
+        </ul>
+
+        <h2>Data Retention</h2>
+        <p>Anonymous analytics data is retained indefinitely in a private Discord channel accessible only to the development team. Users can uninstall the extension at any time to stop all data collection.</p>
+
+        <h2>Your Rights</h2>
+        <p>You can disable analytics by uninstalling the extension. No account is required to use Voxify, and no personal data is collected that would need to be deleted.</p>
+
+        <h2>Contact</h2>
+        <p><a href="mailto:zacbartleywork@gmail.com">zacbartleywork@gmail.com</a></p>
+
+        <p class="note">This extension does not sell, share, or monetize any user data.</p>
+    </div>
+</body>
+</html>
