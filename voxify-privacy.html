@@ -79,45 +79,44 @@
 <body>
     <div class="container">
         <h1>Privacy Policy for Voxify</h1>
-        <p class="last-updated">Last updated: April 10, 2026</p>
+        <p class="last-updated">Last updated: May 20, 2026</p>
 
-        <p>Voxify is a Chrome extension that modifies microphone audio in real-time to apply voice effects during browser-based calls and voice chats.</p>
+        <p>Voxify is a Chrome extension that modifies microphone audio for browser calls, mic testing, soundboard playback, and experimental AI voice conversion.</p>
 
-        <h2>Data Collection</h2>
-        <p>Voxify collects anonymous usage analytics to improve the extension. This includes:</p>
+        <h2>Data Voxify Collects</h2>
         <ul>
-            <li>Install and update events</li>
-            <li>Which voice effects are used and for how long</li>
-            <li>Session duration</li>
-            <li>A randomly generated anonymous identifier (UUID) created on install — this is not linked to any personal information</li>
+            <li>A random anonymous install identifier used for settings, analytics, and unlock checks.</li>
+            <li>Anonymous usage analytics such as install events, selected voice effect, popup opens, session duration, soundboard play counts, and non-sensitive diagnostics.</li>
+            <li>Feedback submitted through the extension, including an optional email address only if the user provides one.</li>
+            <li>Discord account identifier and membership status when a user chooses to verify Discord membership to unlock experimental voices.</li>
         </ul>
-        <p>No names, email addresses, IP addresses, or other personally identifiable information are collected automatically.</p>
-        <p>Feedback submitted voluntarily through the built-in feedback form may include an optional email address if the user chooses to provide one for follow-up purposes.</p>
 
         <h2>Audio Data</h2>
-        <p>All audio processing occurs entirely within your browser using the Web Audio API. No audio is ever recorded, stored, uploaded, or transmitted to any server. Voxify does not have access to the content of your conversations.</p>
+        <p>Standard voice effects and soundboard mixing are processed locally in the browser.</p>
+        <p>Experimental AI Plus voice conversion is different. When a user selects AI Plus, Voxify records short microphone phrases, sends those phrases over HTTPS to the Voxify AI engine for conversion, then returns the converted audio to the browser so it can be played into the microphone stream.</p>
+        <p>Voxify uses AI Plus audio only to provide the requested conversion. Voxify does not intentionally store user voice input or converted voice output.</p>
 
         <h2>Third-Party Services</h2>
-        <p>Anonymous analytics data and user-submitted feedback are sent to a private Discord webhook endpoint operated by the Voxify development team. No data is shared with, sold to, or transferred to any other third parties.</p>
+        <ul>
+            <li>Cloudflare hosts the Voxify backend, entitlement checks, and AI engine routing.</li>
+            <li>Discord OAuth is used only for optional Discord membership verification.</li>
+            <li>Analytics and feedback may be forwarded to a private Discord channel for the developer.</li>
+        </ul>
 
         <h2>Permissions</h2>
         <ul>
-            <li><code>storage</code>: Saves your preferences (selected voice effect, volume, pitch, favourites, soundboard slots) so they persist across browser sessions.</li>
-            <li><code>tabs</code>: Communicates your current voice effect settings from the extension popup to the content script running in the active tab.</li>
-            <li><strong>Host permission</strong> (<code>&lt;all_urls&gt;</code>): Content scripts run on all websites because the extension needs to intercept microphone access on any site that uses it (Discord, Google Meet, Zoom, Teams, Roblox, etc.).</li>
-            <li><strong>Host permission</strong> (<code>discord.com/api</code>): Used solely to send anonymous analytics and voluntary user feedback to a private Discord webhook.</li>
+            <li><code>storage</code>: saves user preferences and extension settings.</li>
+            <li><code>alarms</code>: manages anonymous usage-session timing.</li>
+            <li><strong>Website host access</strong>: lets Voxify modify microphone streams on pages where the user chooses to use voice effects.</li>
+            <li><strong>Voxify backend and AI engine host access</strong>: supports unlock checks and AI Plus conversion.</li>
         </ul>
+        <p>Voxify does not request the <code>tabs</code> permission.</p>
 
-        <h2>Data Retention</h2>
-        <p>Anonymous analytics data is retained indefinitely in a private Discord channel accessible only to the development team. Users can uninstall the extension at any time to stop all data collection.</p>
-
-        <h2>Your Rights</h2>
-        <p>You can disable analytics by uninstalling the extension. No account is required to use Voxify, and no personal data is collected that would need to be deleted.</p>
+        <h2>Limited Use</h2>
+        <p>Voxify uses user data only to provide and improve the extension's visible features. Voxify does not sell user data, use it for unrelated advertising, or transfer it for unrelated purposes.</p>
 
         <h2>Contact</h2>
         <p><a href="mailto:zacbartleywork@gmail.com">zacbartleywork@gmail.com</a></p>
-
-        <p class="note">This extension does not sell, share, or monetize any user data.</p>
     </div>
 </body>
 </html>
